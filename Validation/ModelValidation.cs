@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Models.Dtos;
 

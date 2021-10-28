@@ -30,3 +30,39 @@
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.GlobalUsings.g.cs
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.csproj.AssemblyReference.cache
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.AssemblyInfoInputs.cache
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.AssemblyInfo.cs
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.csproj.CoreCompileInputs.cache
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\ref\dotnet-api-test.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.pdb
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\appsettings.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.staticwebassets.runtime.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.exe
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.deps.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.runtimeconfig.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\ref\dotnet-api-test.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.pdb
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Humanizer.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\scopedcss\bundle\dotnet-api-test.styles.css
+C:\Users\steph\Desktop\LIA2\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.genruntimeconfig.cache

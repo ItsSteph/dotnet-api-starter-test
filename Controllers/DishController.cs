@@ -1,5 +1,7 @@
+using AutoMapper;
 using dotnet_api_test.Models.Dtos;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_api_test.Controllers
 {
@@ -50,6 +52,7 @@ namespace dotnet_api_test.Controllers
         [Route("{id}")]
         public ActionResult DeleteDishById(int id)
         {
+            
             return Ok();
         }
     }
