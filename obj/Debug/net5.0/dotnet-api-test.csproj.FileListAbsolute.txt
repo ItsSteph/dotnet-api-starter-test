@@ -1,0 +1,9 @@
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.csprojAssemblyReference.cache
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.AssemblyInfoInputs.cache
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.AssemblyInfo.cs
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.csproj.CoreCompileInputs.cache
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.GlobalUsings.g.cs
+C:\Users\steph\Desktop\dotnet-api-starter-test\obj\Debug\net5.0\dotnet-api-test.csproj.AssemblyReference.cache
