@@ -31,7 +31,22 @@ namespace dotnet_api_test.Controllers
         [Route("{id}")]
         public ActionResult<ReadDishDto> GetDishById(int id)
         {
-            return Ok();
+            try
+            {
+                var dishModel = _dishRepository.GetDishById(id);
+                if (dishModel == null)
+                {
+                    return NotFound($"Dish with Id = {id} doesn't exist");
+                }
+
+             return Ok(dishModel);   
+            }
+            catch (System.Exception)
+            {
+                
+                throw new System.NotImplementedException();
+            }
+            
         }
 
         [HttpPost]
@@ -52,8 +67,24 @@ namespace dotnet_api_test.Controllers
         [Route("{id}")]
         public ActionResult DeleteDishById(int id)
         {
-            
-            return Ok();
+            try
+            {
+                var dishModel = DeleteDishById(id);
+                if (dishModel == null)
+                {
+                    return NotFound($"Dish with Id = {id} doesn't exist");
+                }
+                _dishRepository.SaveChanges();
+
+                return Ok($"dish with id: {id} has been deleted");
+
+            }
+            catch (System.Exception)
+            {
+                
+                throw new System.NotImplementedException();
+            }
+
         }
     }
 }
