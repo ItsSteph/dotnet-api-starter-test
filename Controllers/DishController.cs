@@ -2,6 +2,8 @@ using AutoMapper;
 using dotnet_api_test.Models.Dtos;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using dotnet_api_test.Exceptions.ExceptionHandlers;
+using dotnet_api_test.Exceptions.ExceptionResponses;
 
 namespace dotnet_api_test.Controllers
 {
@@ -27,7 +29,6 @@ namespace dotnet_api_test.Controllers
             try
             {
                 var dishModel = _dishRepository.GetAllDishes();
-                _logger.LogInformation("test");
                 var dishModelDto = _mapper.Map<IEnumerable<ReadDishDto>>(dishModel);
                 var averagePrice = _dishRepository.GetAverageDishPrice();  
 
@@ -38,6 +39,7 @@ namespace dotnet_api_test.Controllers
                         AveragePrice = averagePrice
                     }
                 );
+                _logger.LogInformation("Dishes and average price was sucessfully fetched from the database");
                  return Ok(dishesAndAveragePriceDto);
             }
             catch (Exception ex)
@@ -78,7 +80,7 @@ namespace dotnet_api_test.Controllers
             {
                 var dishModel = _mapper.Map<Dish>(createDishDto);
                 dishModel = _dishRepository.CreateDish(dishModel);
-                
+                _logger.LogInformation("Dish was created");
                 var dish = _mapper.Map<ReadDishDto>(dishModel);
                 return Ok(dish);
  
@@ -102,7 +104,7 @@ namespace dotnet_api_test.Controllers
                  dishModel.Cost = (double)updateDishDto.Cost;
 
                  dishModel = _dishRepository.UpdateDish(dishModel);
-                 _logger.LogInformation("dish is now updated");
+                 _logger.LogInformation($"Dish {id} was succesfully updated");
             }
             catch (Exception ex)
             {
@@ -118,9 +120,9 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                 _dishRepository.GetDishById(id);            
+                 _dishRepository.DeleteDishById(id);            
 
-                return Ok($"dish with id: {id} has been deleted");
+                return Ok($"Dish with id: {id} has been succesfully deleted");
 
             }
             catch (Exception ex)

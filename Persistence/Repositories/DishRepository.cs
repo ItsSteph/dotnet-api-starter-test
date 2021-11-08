@@ -23,7 +23,7 @@ namespace dotnet_api_test.Persistence.Repositories
 
             if(dishFromDB == null)
             {
-                throw new BadRequestExceptionResponse("No dishes was found");
+                throw new NotFoundRequestExceptionResponse(msg: "No dishes were found");
             }
              return (dishFromDB);
         }
@@ -32,7 +32,6 @@ namespace dotnet_api_test.Persistence.Repositories
         {
             
             var dishFromDB = GetAllDishes();
-            
             return dishFromDB.Select(x => x.Cost).Average();
         }
 
@@ -41,7 +40,7 @@ namespace dotnet_api_test.Persistence.Repositories
             var dishFromDB = _context.Dishes.Find(Id);
             if(dishFromDB == null)
             {
-                throw new BadRequestExceptionResponse($"No dish with the id: {Id} was found");
+                throw new NotFoundRequestExceptionResponse($"No dish with the id: {Id} was found");
             }
             return (dishFromDB);
         }
@@ -51,9 +50,9 @@ namespace dotnet_api_test.Persistence.Repositories
             var dishFromDB = _context.Dishes.Find(Id);
             if(dishFromDB == null)
             {
-                throw new BadRequestExceptionResponse($"No dish with the id: {Id} was found");
+                throw new NotFoundRequestExceptionResponse($"No dish with the id: {Id} was found");
             }
-            _context.Remove(Id);
+            _context.Remove(dishFromDB);
             _context.SaveChanges();
         }
 
