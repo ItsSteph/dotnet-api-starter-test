@@ -1,5 +1,5 @@
 using dotnet_api_test.Persistence.Repositories.Interfaces;
-
+using dotnet_api_test.Exceptions.ExceptionResponses;
 namespace dotnet_api_test.Persistence.Repositories
 {
     public class DishRepository : IDishRepository
@@ -14,102 +14,63 @@ namespace dotnet_api_test.Persistence.Repositories
         void IDishRepository.SaveChanges()
         {
             _context.SaveChanges();
-            throw new System.NotImplementedException();
         }
 
         public IEnumerable<Dish> GetAllDishes()
         {
-            try
+
+            IEnumerable<Dish> dishFromDB = _context.Dishes.ToList();
+
+            if(dishFromDB == null)
             {
-                 var dishModel = _context.Dishes.ToList();
-                 var dishes = dishModel.Select(d =>
-                 new Dish
-                 {
-                     Id = d.Id,
-                     MadeBy = d.MadeBy,
-                     Name = d.Name
-                 });
-                 return (dishes);
+                throw new BadRequestExceptionResponse("No dishes was found");
             }
-            catch (System.Exception)
-            {
-                
-                throw new System.NotImplementedException();
-            }
-            
+             return (dishFromDB);
         }
 
         public dynamic? GetAverageDishPrice()
         {
-            throw new System.NotImplementedException();
+            
+            var dishFromDB = GetAllDishes();
+            
+            return dishFromDB.Select(x => x.Cost).Average();
         }
 
         public Dish GetDishById(int Id)
         {
-
-            try
+            var dishFromDB = _context.Dishes.Find(Id);
+            if(dishFromDB == null)
             {
-                 var dishModel = _context.Dishes.Find(Id);
-                 var dish = new Dish
-                 {
-                     Id = dishModel.Id,
-                     MadeBy = dishModel.MadeBy,
-                     Name = dishModel.Name
-
-                 };
-                 return (dish);
+                throw new BadRequestExceptionResponse($"No dish with the id: {Id} was found");
             }
-            catch (System.Exception)
-            {
-                
-                throw new System.NotImplementedException();
-            }
-            
+            return (dishFromDB);
         }
 
         public void DeleteDishById(int Id)
         {
-            try
+            var dishFromDB = _context.Dishes.Find(Id);
+            if(dishFromDB == null)
             {
-                var dishModel = _context.Dishes.Find(Id);
+                throw new BadRequestExceptionResponse($"No dish with the id: {Id} was found");
             }
-            catch (System.Exception)
-            {
-                
-                throw new System.NotImplementedException();
-            }
-            
+            _context.Remove(Id);
+            _context.SaveChanges();
         }
 
         public Dish CreateDish(Dish dish)
         {
-            try
-            {
-                var dishModel = new Dish
-                {
-                    Id = dish.Id,
-                    Name = dish.Name,
-                    MadeBy = dish.MadeBy,
-                    Cost = dish.Cost
-                };
+            _context.Add(dish);
+            _context.SaveChanges();
 
-                _context.Dishes.Add(dishModel);
-                _context.SaveChanges();
-
-                return (dishModel);
-                 
-            }
-            catch (System.Exception)
-            {
-                
-                throw new System.NotImplementedException();;
-            }
-            
+            return (dish);           
         }
 
         public Dish UpdateDish(Dish dish)
         {
-            throw new System.NotImplementedException();
+            _context.Update(dish);
+            _context.SaveChanges();
+
+            return (dish);
         }
     }
 }

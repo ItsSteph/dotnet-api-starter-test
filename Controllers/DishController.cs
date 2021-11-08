@@ -21,10 +21,31 @@ namespace dotnet_api_test.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("GetDishesAndAverageDishPrice")]
         public ActionResult<DishesAndAveragePriceDto> GetDishesAndAverageDishPrice()
         {
-            return Ok();
+            try
+            {
+                var dishModel = _dishRepository.GetAllDishes();
+                _logger.LogInformation("test");
+                var dishModelDto = _mapper.Map<IEnumerable<ReadDishDto>>(dishModel);
+                var averagePrice = _dishRepository.GetAverageDishPrice();  
+
+                var dishesAndAveragePriceDto = _mapper.Map<DishesAndAveragePriceDto>(
+                    new DishesAndAveragePriceDto()
+                    {
+                        Dishes = dishModelDto,
+                        AveragePrice = averagePrice
+                    }
+                );
+                 return Ok(dishesAndAveragePriceDto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Something went wrong");
+                throw;
+                
+            }
         }
 
         [HttpGet]
@@ -34,32 +55,60 @@ namespace dotnet_api_test.Controllers
             try
             {
                 var dishModel = _dishRepository.GetDishById(id);
-                if (dishModel == null)
+                var dish = _mapper.Map<ReadDishDto>(dishModel);
+
+                if (dish == null)
                 {
                     return NotFound($"Dish with Id = {id} doesn't exist");
                 }
-
-             return Ok(dishModel);   
+                return Ok(dish);   
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                
-                throw new System.NotImplementedException();
-            }
-            
+                _logger.LogError(ex, "Something went wrong");
+                throw;
+            } 
         }
 
         [HttpPost]
-        [Route("")]
+        [Route("CreateDish")]
         public ActionResult<ReadDishDto> CreateDish([FromBody] CreateDishDto createDishDto)
         {
-            return Ok();
+            try
+            {
+                var dishModel = _mapper.Map<Dish>(createDishDto);
+                dishModel = _dishRepository.CreateDish(dishModel);
+                
+                var dish = _mapper.Map<ReadDishDto>(dishModel);
+                return Ok(dish);
+ 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Something went wrong");
+                throw;
+            }
         }
 
         [HttpPut]
         [Route("{id}")]
         public ActionResult<ReadDishDto> UpdateDishById(int id, UpdateDishDto updateDishDto)
         {
+            try
+            {
+                 var dishModel = _dishRepository.GetDishById(id);
+                 dishModel.Name = updateDishDto.Name;
+                 dishModel.MadeBy = updateDishDto.MadeBy;
+                 dishModel.Cost = (double)updateDishDto.Cost;
+
+                 dishModel = _dishRepository.UpdateDish(dishModel);
+                 _logger.LogInformation("dish is now updated");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Something went wrong");
+                throw;
+            }
             return Ok();
         }
 
@@ -69,20 +118,15 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                var dishModel = DeleteDishById(id);
-                if (dishModel == null)
-                {
-                    return NotFound($"Dish with Id = {id} doesn't exist");
-                }
-                _dishRepository.SaveChanges();
+                 _dishRepository.GetDishById(id);            
 
                 return Ok($"dish with id: {id} has been deleted");
 
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                
-                throw new System.NotImplementedException();
+                _logger.LogError(ex, "Something went wrong");
+                throw;
             }
 
         }

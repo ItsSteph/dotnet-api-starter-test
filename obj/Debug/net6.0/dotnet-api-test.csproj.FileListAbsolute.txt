@@ -102,4 +102,3 @@ C:\Users\steph\Desktop\trying to run project\dotnet-api-starter-test\obj\Debug\n
 C:\Users\steph\Desktop\trying to run project\dotnet-api-starter-test\obj\Debug\net6.0\ref\dotnet-api-test.dll
 C:\Users\steph\Desktop\trying to run project\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.pdb
 C:\Users\steph\Desktop\trying to run project\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.genruntimeconfig.cache
-C:\Users\steph\Desktop\trying to run project\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.csproj.CopyComplete
