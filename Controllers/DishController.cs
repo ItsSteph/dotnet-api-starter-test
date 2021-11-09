@@ -2,7 +2,6 @@ using AutoMapper;
 using dotnet_api_test.Models.Dtos;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using dotnet_api_test.Exceptions.ExceptionHandlers;
 using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Validation;
 
@@ -10,7 +9,6 @@ namespace dotnet_api_test.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    
     public class DishController : ControllerBase
     {
         private readonly ILogger<DishController> _logger;
