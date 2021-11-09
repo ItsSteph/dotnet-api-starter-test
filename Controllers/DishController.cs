@@ -42,11 +42,9 @@ namespace dotnet_api_test.Controllers
                 _logger.LogInformation("Dishes and average price was sucessfully fetched from the database");
                  return Ok(dishesAndAveragePriceDto);
             }
-            catch (Exception ex)
+            catch (HttpExceptionResponse ex)
             {
-                _logger.LogError(ex, "Something went wrong");
-                throw;
-                
+                throw ex;  
             }
         }
 
@@ -65,11 +63,10 @@ namespace dotnet_api_test.Controllers
                 }
                 return Ok(dish);   
             }
-            catch (Exception ex)
+            catch (HttpExceptionResponse ex)
             {
-                _logger.LogError(ex, "Something went wrong");
-                throw;
-            } 
+                throw ex;
+            }
         }
 
         [HttpPost]
@@ -85,10 +82,9 @@ namespace dotnet_api_test.Controllers
                 return Ok(dish);
  
             }
-            catch (Exception ex)
+            catch (HttpExceptionResponse ex)
             {
-                _logger.LogError(ex, "Something went wrong");
-                throw;
+                throw ex;
             }
         }
 
@@ -105,13 +101,14 @@ namespace dotnet_api_test.Controllers
 
                  dishModel = _dishRepository.UpdateDish(dishModel);
                  _logger.LogInformation($"Dish {id} was succesfully updated");
+                var dish = _mapper.Map<ReadDishDto>(dishModel);
+                return Ok(dish);
+
             }
-            catch (Exception ex)
+            catch (HttpExceptionResponse ex)
             {
-                _logger.LogError(ex, "Something went wrong");
-                throw;
+                throw ex;
             }
-            return Ok();
         }
 
         [HttpDelete]
@@ -120,17 +117,15 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                 _dishRepository.DeleteDishById(id);            
+                _dishRepository.DeleteDishById(id);            
 
                 return Ok($"Dish with id: {id} has been succesfully deleted");
-
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Something went wrong");
                 throw;
             }
-
         }
     }
 }
