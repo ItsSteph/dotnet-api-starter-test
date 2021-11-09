@@ -4,11 +4,13 @@ using dotnet_api_test.Persistence.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using dotnet_api_test.Exceptions.ExceptionHandlers;
 using dotnet_api_test.Exceptions.ExceptionResponses;
+using dotnet_api_test.Validation;
 
 namespace dotnet_api_test.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    
     public class DishController : ControllerBase
     {
         private readonly ILogger<DishController> _logger;
@@ -28,8 +30,8 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                var dishModel = _dishRepository.GetAllDishes();
-                var dishModelDto = _mapper.Map<IEnumerable<ReadDishDto>>(dishModel);
+                var dishFromDb = _dishRepository.GetAllDishes();
+                var dishModelDto = _mapper.Map<IEnumerable<ReadDishDto>>(dishFromDb);
                 var averagePrice = _dishRepository.GetAverageDishPrice();  
 
                 var dishesAndAveragePriceDto = _mapper.Map<DishesAndAveragePriceDto>(
@@ -44,6 +46,7 @@ namespace dotnet_api_test.Controllers
             }
             catch (HttpExceptionResponse ex)
             {
+                _logger.LogError("Something went wrong");
                 throw ex;  
             }
         }
@@ -54,9 +57,8 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                var dishModel = _dishRepository.GetDishById(id);
-                var dish = _mapper.Map<ReadDishDto>(dishModel);
-
+                var dishFromDb = _dishRepository.GetDishById(id);
+                var dish = _mapper.Map<ReadDishDto>(dishFromDb);
                 if (dish == null)
                 {
                     return NotFound($"Dish with Id = {id} doesn't exist");
@@ -65,7 +67,8 @@ namespace dotnet_api_test.Controllers
             }
             catch (HttpExceptionResponse ex)
             {
-                throw ex;
+                _logger.LogError("Something went wrong");
+                throw ex;  
             }
         }
 
@@ -75,12 +78,12 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                var dishModel = _mapper.Map<Dish>(createDishDto);
-                dishModel = _dishRepository.CreateDish(dishModel);
+                ModelValidation.ValidateCreateDishDto(createDishDto);
+                var dishFromDb = _mapper.Map<Dish>(createDishDto);
+                dishFromDb = _dishRepository.CreateDish(dishFromDb);
                 _logger.LogInformation("Dish was created");
-                var dish = _mapper.Map<ReadDishDto>(dishModel);
+                var dish = _mapper.Map<ReadDishDto>(dishFromDb);
                 return Ok(dish);
- 
             }
             catch (HttpExceptionResponse ex)
             {
@@ -94,16 +97,15 @@ namespace dotnet_api_test.Controllers
         {
             try
             {
-                 var dishModel = _dishRepository.GetDishById(id);
-                 dishModel.Name = updateDishDto.Name;
-                 dishModel.MadeBy = updateDishDto.MadeBy;
-                 dishModel.Cost = (double)updateDishDto.Cost;
-
-                 dishModel = _dishRepository.UpdateDish(dishModel);
+                 var dishFromDb = _dishRepository.GetDishById(id);
+                 ModelValidation.ValidateUpdateDishDto(updateDishDto);
+                 dishFromDb.Name = updateDishDto.Name;
+                 dishFromDb.MadeBy = updateDishDto.MadeBy;
+                 dishFromDb.Cost = (double)updateDishDto.Cost;
+                 dishFromDb = _dishRepository.UpdateDish(dishFromDb);
                  _logger.LogInformation($"Dish {id} was succesfully updated");
-                var dish = _mapper.Map<ReadDishDto>(dishModel);
+                var dish = _mapper.Map<ReadDishDto>(dishFromDb);
                 return Ok(dish);
-
             }
             catch (HttpExceptionResponse ex)
             {
@@ -118,13 +120,11 @@ namespace dotnet_api_test.Controllers
             try
             {
                 _dishRepository.DeleteDishById(id);            
-
                 return Ok($"Dish with id: {id} has been succesfully deleted");
             }
-            catch (Exception ex)
+            catch (HttpExceptionResponse ex)
             {
-                _logger.LogError(ex, "Something went wrong");
-                throw;
+                throw ex;
             }
         }
     }

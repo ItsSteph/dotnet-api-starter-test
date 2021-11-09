@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sRYfy71jM7KR/bLZJs3QPqjtkK30s0XSPyToNdJ2xBlPPWM5PzfPI/flxdD9irYcNwDa0w/0gC/RP9ru5/J8xw==",
+  "dgSpecHash": "xpeP8HtXhR1nQYz1V2ki4NoOgnSGrHuU+v9p3nwV0nz7e9TxZxRSQJ7SBsBmL5ObdqdWbnWflnojT06J8zye0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\steph\\Desktop\\trying to run project\\dotnet-api-starter-test\\dotnet-api-test.csproj",
+  "projectFilePath": "C:\\Users\\steph\\Desktop\\project\\dotnet-api-starter-test\\dotnet-api-test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\steph\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

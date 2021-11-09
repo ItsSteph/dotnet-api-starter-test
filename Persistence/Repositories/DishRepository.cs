@@ -18,9 +18,7 @@ namespace dotnet_api_test.Persistence.Repositories
 
         public IEnumerable<Dish> GetAllDishes()
         {
-
             IEnumerable<Dish> dishFromDB = _context.Dishes.ToList();
-
             if(dishFromDB == null)
             {
                 throw new NotFoundRequestExceptionResponse(msg: "No dishes were found");
@@ -29,8 +27,7 @@ namespace dotnet_api_test.Persistence.Repositories
         }
 
         public dynamic? GetAverageDishPrice()
-        {
-            
+        {   
             var dishFromDB = GetAllDishes();
             return dishFromDB.Select(x => x.Cost).Average();
         }
@@ -60,7 +57,6 @@ namespace dotnet_api_test.Persistence.Repositories
         {
             _context.Add(dish);
             _context.SaveChanges();
-
             return (dish);           
         }
 
@@ -68,7 +64,6 @@ namespace dotnet_api_test.Persistence.Repositories
         {
             _context.Update(dish);
             _context.SaveChanges();
-
             return (dish);
         }
     }
